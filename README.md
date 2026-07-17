@@ -4,18 +4,18 @@ A practical, vendor-aware observability lab covering infrastructure monitoring, 
 
 ## Current status
 
-This repository documents hands-on lab work and operational exposure. It does not represent a production customer environment, and it contains no customer data, credentials, private addresses, or invented performance results.
+This repository documents hands-on implementation, operational exposure, and clearly labelled portfolio labs. See the [experience and evidence map](docs/experience-and-evidence.md) for the depth attached to each tool. It does not represent a production customer environment, and it contains no customer data, credentials, private addresses, or invented performance results.
 
 | Area | Purpose | Status |
 |---|---|---|
 | Prometheus + Grafana | Metrics collection and dashboards | Runnable local lab |
 | Alertmanager | Alert routing and grouping | Runnable local lab |
 | Node Exporter | Linux host metrics | Runnable local lab |
-| Uptime Kuma | Service and endpoint availability | Guided lab |
-| Zabbix | Infrastructure monitoring and alerting | Guided lab |
-| Netdata | Real-time host health and performance | Guided lab |
-| AWS CloudWatch | AWS metrics, logs, and alarms | Safe command examples |
-| Google Cloud Observability | Cloud Monitoring, Logging, and alerting | Safe command examples |
+| Uptime Kuma | Service and endpoint availability | Lab/Testing |
+| Zabbix | Infrastructure monitoring and alerting | Hands-on AWS/GCP work |
+| Netdata | Real-time host health and performance | Lab/Testing |
+| AWS CloudWatch | AWS metrics, logs, and alarms | Operational exposure + safe examples |
+| Google Cloud Observability | Cloud Monitoring, Logging, and alerting | Operational experience + safe examples |
 
 ## Quick start
 
