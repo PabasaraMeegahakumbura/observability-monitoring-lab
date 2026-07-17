@@ -1,0 +1,12 @@
+route:
+  receiver: local-observation
+  group_by: [alertname, job]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+
+receivers:
+  - name: local-observation
+
+# Add email, Slack, Teams, or webhook receivers only through local secrets.
+# Never commit real webhook URLs or SMTP passwords.

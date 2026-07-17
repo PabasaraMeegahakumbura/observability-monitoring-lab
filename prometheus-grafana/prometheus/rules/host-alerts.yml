@@ -1,0 +1,20 @@
+groups:
+  - name: lab-host-health
+    rules:
+      - alert: ScrapeTargetDown
+        expr: up == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus target is unavailable"
+          description: "{{ $labels.job }} target {{ $labels.instance }} has been unreachable for two minutes."
+
+      - alert: HostDiskSpaceLow
+        expr: 100 * node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"} < 15
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Host filesystem has less than 15% free space"
+          description: "Filesystem {{ $labels.mountpoint }} on {{ $labels.instance }} requires investigation."

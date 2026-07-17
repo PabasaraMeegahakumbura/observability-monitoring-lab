@@ -1,0 +1,8 @@
+.env
+*.log
+data/
+secrets/
+*.pem
+*.key
+*.tfstate*
+.DS_Store
