@@ -1,0 +1,46 @@
+# Example Nagios command definitions for the AWS Nagios Core monitoring lab.
+# Keep this file as a sanitized reference. Do not commit real credentials.
+
+# NRPE remote command execution.
+define command {
+    command_name    check_nrpe
+    command_line    /usr/lib/nagios/plugins/check_nrpe -H $HOSTADDRESS$ -c $ARG1$
+}
+
+# TCP port monitoring using the plugin installed with Nagios Core from source.
+define command {
+    command_name    check_tcp_port
+    command_line    /usr/local/nagios/libexec/check_tcp -H $HOSTADDRESS$ -p $ARG1$
+}
+
+# Website HTTP availability check.
+define command {
+    command_name    check_website_http
+    command_line    /usr/local/nagios/libexec/check_http -H $ARG1$
+}
+
+# Website HTTPS availability check.
+define command {
+    command_name    check_website_https
+    command_line    /usr/local/nagios/libexec/check_http -H $ARG1$ -S
+}
+
+# SSL certificate expiry check.
+# Example usage: check_ssl_cert!example.com!30
+# This warns when certificate expiry is within 30 days.
+define command {
+    command_name    check_ssl_cert
+    command_line    /usr/local/nagios/libexec/check_http -H $ARG1$ -S -C $ARG2$
+}
+
+# Telegram service notification command.
+define command {
+    command_name    notify-service-by-telegram
+    command_line    /usr/local/nagios/libexec/notify_telegram.sh SERVICE "$SERVICESTATE$" "$HOSTNAME$" "$SERVICEDESC$" "$SERVICEOUTPUT$"
+}
+
+# Telegram host notification command.
+define command {
+    command_name    notify-host-by-telegram
+    command_line    /usr/local/nagios/libexec/notify_telegram.sh HOST "$HOSTSTATE$" "$HOSTNAME$" "" "$HOSTOUTPUT$"
+}
