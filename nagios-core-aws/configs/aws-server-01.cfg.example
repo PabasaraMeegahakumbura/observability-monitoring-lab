@@ -1,0 +1,106 @@
+# Sanitized example host and service definitions for a monitored AWS Linux server.
+# Replace placeholders before use. Do not commit real public IPs, private IPs, domains, or customer names.
+
+define host {
+    use                     linux-server
+    host_name               aws-server-01
+    alias                   AWS Linux Server 01
+    address                 <MONITORED_SERVER_PRIVATE_IP>
+    max_check_attempts      5
+    check_period            24x7
+    notification_interval   30
+    notification_period     24x7
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     PING
+    check_command           check_ping!100.0,20%!500.0,60%
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     SSH
+    check_command           check_ssh
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Current Load
+    check_command           check_nrpe!check_load
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Root Disk Usage
+    check_command           check_nrpe!check_disk
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Current Users
+    check_command           check_nrpe!check_users
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Total Processes
+    check_command           check_nrpe!check_total_procs
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Memory Usage
+    check_command           check_nrpe!check_memory
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Docker Service
+    check_command           check_nrpe!check_docker_service
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     NRPE Port 5666
+    check_command           check_tcp_port!5666
+}
+
+# Add these only if the monitored host actually runs HTTP/HTTPS.
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     HTTP Port 80
+    check_command           check_tcp_port!80
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     HTTPS Port 443
+    check_command           check_tcp_port!443
+}
+
+# Replace example.com with a domain you own or are authorized to monitor.
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     Website HTTPS
+    check_command           check_website_https!example.com
+}
+
+define service {
+    use                     generic-service
+    host_name               aws-server-01
+    service_description     SSL Certificate Expiry
+    check_command           check_ssl_cert!example.com!30
+}
