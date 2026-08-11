@@ -85,6 +85,6 @@ A tool is marked completed only after its validation checklist passes. Screensho
 5. Test CloudWatch and Google Cloud examples in controlled sandbox projects.
 6. Record lessons learned and troubleshooting outcomes.
 
-## License
+## License and usage
 
-MIT. See [LICENSE](LICENSE).
+All rights reserved. See [LICENSE](LICENSE). This repository is public for portfolio review and learning evidence only. No permission is granted to copy, modify, redistribute, sell, reuse, rebrand, or create derivative works without prior written permission from the owner.
